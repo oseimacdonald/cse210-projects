@@ -1,3 +1,4 @@
+// Abstract base class for goals
 public abstract class Goal
 {
     private string _goalName;

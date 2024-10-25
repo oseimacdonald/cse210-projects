@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+
+// Eternal goal class
 public class EternalGoal : Goal
 {
     private int _recordedCount;
@@ -18,4 +24,3 @@ public class EternalGoal : Goal
 
     public override int GetProgress() => _recordedCount; // Progress reflects recorded events
 }
-

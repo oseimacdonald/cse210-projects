@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+
+// Simple goal class
 public class SimpleGoal : Goal
 {
     private bool _isComplete;

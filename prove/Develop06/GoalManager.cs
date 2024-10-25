@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
+// Goal manager class
 public class GoalManager
 {
     private List<Goal> _goals;
@@ -45,5 +48,26 @@ public class GoalManager
             totalPoints += goal.GetProgress() * goal.GetPoints();
         }
         return totalPoints;
+    }
+
+    public void SaveGoals(string filename)
+    {
+        string json = JsonConvert.SerializeObject(_goals, Formatting.Indented);
+        File.WriteAllText(filename, json);
+        Console.WriteLine("Goals saved successfully.");
+    }
+
+    public void LoadGoals(string filename)
+    {
+        if (File.Exists(filename))
+        {
+            string json = File.ReadAllText(filename);
+            _goals = JsonConvert.DeserializeObject<List<Goal>>(json);
+            Console.WriteLine("Goals loaded successfully.");
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
+        }
     }
 }
